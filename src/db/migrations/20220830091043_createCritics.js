@@ -1,0 +1,15 @@
+
+exports.up = async function(knex) {
+  return knex.schema.createTable("critics", (table) => {
+      table.increments("critic_id").primary;
+      table.string("preferred_name");
+      table.string("surname");
+      table.string("organization_name")
+      table.timestamps(true, true);
+  })
+  // knex.raw("DESCRIBE TABLE critics");
+};
+
+exports.down = function(knex) {
+  return knex.schema.dropTableIfExists("critics")
+};
